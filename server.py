@@ -23,7 +23,7 @@ def generate_text():
             "Verspielt-leicht bedeutet z.B. verspielt – mit Witz, Leichtigkeit, kleinen Neckereien oder neckisch – humorvoll, augenzwinkernd, flirtend oder innlich – körpernah, anspielungsreich, ohne derb zu sein oder melancholisch – sanfte Traurigkeit, bittersüße Note; "
             "Dunkel-dramatisch bedeutet z.B. dramatisch – von Schmerz, Trennung, Gefahr überschattet oder klagend – voller Wehmut, fast wie eine Klage oder schicksalsergeben – – tragisch, von Unausweichlichkeit geprägt. "
             "Die Texte dürfen sich sehr gerne der Ausdrucksweisen des jeweils ausgewählten Jahrhunderts bedienen. Die Texte sollen geschlechterneutral sein; bitte keine Gendersternchen oder ähnliches, sondern wirklich neutral. "
-            "Bitte nur eines erstellen, also entweder Liebesgedicht oder Liebesbrief. Bitte unbedingt maximal acht Zeilen für einen Liebesbrief und zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte alle ohne Titel und ohne irgendwelche Überschriften!"
+            "Bitte nur eines erstellen, also entweder Liebesgedicht oder Liebesbrief. Bitte unbedingt maximal acht Zeilen für einen Liebesbrief und zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte alle ohne Titel."
         )
 
         response = client.chat.completions.create(
