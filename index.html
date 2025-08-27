@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Generator</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Add padding for header and footer */
+            padding: 80px 20px; 
+            overflow: hidden;
+            position: relative;
+            background-image: url("hintergrund.gif");
+        }
+        
+        /* --- HEADER --- */
+        .page-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0, 0.2);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+
+        .header-logo {
+            height: 35px;
+        }
+
+        /* --- FOOTER --- */
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0, 0.2);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+
+        .footer-url {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: bold;
+        }
+     
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+        
+        .container {
+	    position: fixed;
+	    top: 360px;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    border-radius: 20px;
+	    padding: 40px;
+	    max-width: 850px;
+	    width: 100%;
+	    max-height: calc(100vh - 180px); 
+	    overflow-y: auto;
+	}
+        
+        .title {
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .button-row, .era-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .type-btn, .era-btn, .tone-btn, .generate-btn, .print-btn, .reset-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .type-btn, .era-btn {
+            cursor: pointer;
+        }
+
+        .type-btn:disabled, .era-btn:disabled, .generate-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .type-btn {
+            padding: 10px 18px;
+            border: 2px solid #ff0000;
+            border-radius: 20px;
+            background: transparent;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .type-btn:hover, .type-btn.active {
+            background: rgba(255, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .era-btn {
+            padding: 10px 18px;
+            border: 2px solid #ff0000;
+            border-radius: 20px;
+            background: transparent;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .era-btn:hover, .era-btn.active {
+            background: rgba(255, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .tone-btn {
+            padding: 10px 18px;
+            border: 2px solid #ff0000;
+            border-radius: 20px;
+            background: transparent;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .tone-btn:hover, .tone-btn.active {
+            background: rgba(255, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .generate-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff0000;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .result-area {
+            background: linear-gradient(135deg, rgba(255, 240, 245, 0.9), rgba(230, 230, 250, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 0 10px rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            color: #4a2d6b;
+            display: none;
+            line-height: 1.7;
+            font-family: 'Montserrat', sans-serif
+            font-size: 17px;
+            overflow-y: hidden;
+            position: relative; /* Needed for the loader overlay */
+            min-height: 280px; /* Ensure space for loader */
+        }
+        
+        .result-loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(2px);
+            border-radius: 15px; /* Match parent */
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .result-loader .spinner {
+             width: 50px;
+             height: 50px;
+             border: 4px solid rgba(74, 45, 107, 0.2);
+             border-top-color: #4a2d6b;
+             border-radius: 50%;
+             animation: spin 1s linear infinite;
+        }
+
+        .result-loader .loading-text {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #4a2d6b;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .action-buttons {
+            display: none; /* Hidden by default */
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .print-btn, .reset-btn {
+            flex-grow: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .print-btn {
+             background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        .reset-btn {
+            background: linear-gradient(45deg, #868f96, #596164);
+        }
+        
+        .print-btn:hover, .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid #ff4444;
+            color: #ff4444;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .title { font-size: 2em; }
+            .button-row, .era-row { flex-direction: column; align-items: stretch; }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- --- HEADER --- -->
+    <header class="page-header">
+        <img src="https://raw.githubusercontent.com/sebastianruffberlin/love-generator/update/templates/logo.png" alt="Stadtmuseum Logo" class="header-logo">
+    </header>
+
+    <div class="container" id="mainContainer">
+        
+        <form id="loveForm">
+            <div class="button-row">
+                <button type="button" class="type-btn" data-type="Liebesgedicht">Liebesgedicht</button>
+                <button type="button" class="type-btn" data-type="Liebesbrief">Liebesbrief</button>
+            </div>
+            <div class="era-row">
+                <button type="button" class="era-btn" data-era="17">17. Jahrhundert</button>
+                <button type="button" class="era-btn" data-era="18">18. Jahrhundert</button>
+                <button type="button" class="era-btn" data-era="19">19. Jahrhundert</button>
+                <button type="button" class="era-btn" data-era="20">20. Jahrhundert</button>
+                <button type="button" class="era-btn" data-era="21">21. Jahrhundert</button>
+            </div>
+	    <div class="tone-row button-row">
+	        <button type="button" class="tone-btn" data-tone="klassisch-romantisch">klassisch-romantisch</button>
+	        <button type="button" class="tone-btn" data-tone="feierlich-kunstvoll">feierlich-kunstvoll</button>
+	        <button type="button" class="tone-btn" data-tone="verspielt-leicht">verspielt-leicht</button>
+	        <button type="button" class="tone-btn" data-tone="dunkel-dramatisch">dunkel-dramatisch</button>
+	    </div>
+            <button type="submit" class="generate-btn" id="generateBtn">✨ Liebe generieren</button>
+        </form>
+        
+        <div class="result-area" id="resultArea">
+            <div class="result-loader" id="resultLoader">
+                <div class="spinner"></div>
+                <div class="loading-text">Text wird generiert...</div>
+            </div>
+        </div>
+        <div class="error" id="errorArea"></div>
+        
+        <div class="action-buttons" id="actionButtons">
+            <button class="print-btn" id="printBtn">🖨️ Drucken</button>
+            <button class="reset-btn" id="resetBtn">🔄 Neu beginnen</button>
+        </div>
+</div>
+
+    <!-- --- FOOTER --- -->
+    <footer class="page-footer">
+        <span class="footer-url">www.stadtmuseum.de</span>
+    </footer>
+
+    <script>
+        let selectedType = '';
+        let selectedEra = '';
+        let selectedTone = '';
+        
+        const typeBtns = document.querySelectorAll('.type-btn');
+        const eraBtns = document.querySelectorAll('.era-btn');
+        const toneBtns = document.querySelectorAll('.tone-btn');
+        const generateBtn = document.getElementById('generateBtn');
+        const loveForm = document.getElementById('loveForm');
+        const resultArea = document.getElementById('resultArea');
+        const errorArea = document.getElementById('errorArea');
+        const actionButtons = document.getElementById('actionButtons');
+        const printBtn = document.getElementById('printBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const resultLoader = document.getElementById('resultLoader');
+
+        function setFormEnabled(enabled) {
+            typeBtns.forEach(btn => btn.disabled = !enabled);
+            eraBtns.forEach(btn => btn.disabled = !enabled);
+            generateBtn.disabled = !enabled;
+        }
+
+        typeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                typeBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedType = this.dataset.type;
+            });
+        });
+        
+        eraBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                eraBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedEra = this.dataset.era;
+            });
+        });
+
+        toneBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                toneBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedTone = this.dataset.tone;
+            });
+        });
+        
+        loveForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (!selectedType || !selectedEra || !selectedTone) {
+                showError('Bitte wähle eine Art des Textes, ein Jahrhundert und einen Tonfall aus.');
+                return;
+            }
+            
+            setFormEnabled(false);
+            actionButtons.style.display = 'none';
+            errorArea.style.display = 'none';
+            resultArea.style.display = 'block';
+            resultArea.innerHTML = ''; 
+            resultLoader.style.display = 'flex';
+            resultArea.appendChild(resultLoader);
+
+            try {
+                // --- THIS IS NOW THE REAL API CALL ---
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text_type: selectedType,
+                        era: selectedEra,
+			tone: selectedTone
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const responseData = await response.json();
+                
+                resultLoader.style.display = 'none';
+
+                if (responseData.error) {
+                    showError('Fehler von der API: ' + responseData.error);
+                } else {
+                    resultArea.innerHTML = responseData.text.replace(/\n/g, '<br>');
+                    actionButtons.style.display = 'flex';
+                }
+                
+            } catch (error) {
+                resultLoader.style.display = 'none';
+                showError('Netzwerk- oder Serverfehler: ' + error.message);
+            } finally {
+                setFormEnabled(true);
+            }
+        });
+        
+        printBtn.addEventListener('click', function() {
+            const resultText = document.getElementById('resultArea').innerText;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`<html><head><title>Romantischer Text</title><style>body{font-family:'Montserrat',sans-serif;padding:40px;line-height:1.6;text-align:center;}div{white-space:pre-wrap;font-size:1.1em;text-align:center;}</style></head><body><div>${resultText}</div></body></html>`);
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
+            printWindow.close();
+        });
+
+        resetBtn.addEventListener('click', function() {
+            resultArea.style.display = 'none';
+            actionButtons.style.display = 'none';
+            errorArea.style.display = 'none';
+            selectedType = '';
+            selectedEra = '';
+            typeBtns.forEach(b => b.classList.remove('active'));
+            eraBtns.forEach(b => b.classList.remove('active'));
+            setFormEnabled(true);
+        });
+        
+        function showError(message) {
+            errorArea.textContent = message;
+            errorArea.style.display = 'block';
+            resultArea.style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>
