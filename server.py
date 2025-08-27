@@ -20,7 +20,7 @@ def generate_text():
             f"Generiere ausschließlich einen einzigen Text: entweder einen Liebesbrief ODER ein Liebesgedicht. "
             f"Generiere KEINEN TITEL wie 'Liebesbrief' oder 'Liebesgedicht'. "
             f"Generiere KEINE PLATZHALTER wie 'Dein Name' oder ähnliches. "
-            f"Beschränke den Liebesbrief auf maximal acht Zeilen. "
+            f"Beschränke den Liebesbrief auf maximal acht Zeilen und 80 Wörter. "
             f"Beschränke das Liebesgedicht auf maximal zwei Strophen zu je vier Versen. "
             f"Die Texte sollen geschlechterneutral sein und KEINE Gendersternchen oder ähnliches enthalten. "
             f"Die Texte sollen sich im Stil des {era}. Jahrhunderts mit einem {tone} Tonfall anlehnen. "
