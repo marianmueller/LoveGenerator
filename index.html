@@ -435,7 +435,7 @@
         printBtn.addEventListener('click', function() {
             const resultText = document.getElementById('resultArea').innerText;
             const printWindow = window.open('', '_blank');
-            printWindow.document.write(`<html><head><title>Romantischer Text</title><style>body{font-family:'Montserrat',sans-serif;padding:40px;line-height:1.6;text-align:center;}div{white-space:pre-wrap;font-size:12px;text-align:center;}</style></head><body><div>${resultText}</div></body></html>`);
+            printWindow.document.write(`<html><head><title>Romantischer Text</title><style>body{font-family:'Montserrat',sans-serif;padding:40px;line-height:1.6;text-align:center;}div{white-space:pre-wrap;font-size:14px;text-align:center;}</style></head><body><div>${resultText}</div></body></html>`);
             printWindow.document.close();
             printWindow.focus();
             printWindow.print();
