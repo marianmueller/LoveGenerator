@@ -29,7 +29,7 @@ def generate_text():
                 {
                     "role": "system",
                     "content": (
-                        "Deine Aufgabe ist es, einen EINZIGEN, geschlechtsneutralen Text zu erstellen, entweder einen Liebesbrief ODER ein Liebesgedicht. "
+                        "Deine Aufgabe ist es, einen EINZIGEN, GESCHLECHTSNEUTRALEN Text zu erstellen, entweder einen Liebesbrief ODER ein Liebesgedicht. "
                         "Generiere KEINEN TITEL wie 'Liebesbrief' oder 'Liebesgedicht'. "
                         "Generiere KEINE PLATZHALTER wie 'Dein Name' oder ähnliches. NIEMALS. "
                         "Verfasse einen Liebesbrief AUSSCHLIESSLICH als Prosatext. "
