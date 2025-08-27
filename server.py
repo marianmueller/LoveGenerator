@@ -16,17 +16,19 @@ def generate_text():
         era = data.get('era')
         tone = data.get('tone')
         
-        prompt = (f"Schreibe einen {text_type} im Stil des {era}. Jahrhunderts mit einem {tone} Tonfall. Du kannst dich hieran orientieren:
-            Klassisch-romantisch bedeutet z.B. sehnsuchtsvoll – voller Fernweh und unerfüllter Liebe oder schwärmerisch – verträumt, begeistert, idealisierend oder zärtlich – sanft, warmherzig, liebevoll oder leidenschaftlich – intensiv, brennend, fast dramatisch;
-            Feierlich-kunstvoll bedeutet z.B. feierlich – würdevoll, erhaben, fast wie eine Hymne oder pathetisch – mit großer Geste, überbordend, rhetorisch oder höfisch-galant – charmant, elegant, höflich-unterwerfend oder ergeben/dienend – unterwürfig, voller Hingabe;
-            Verspielt-leicht bedeutet z.B. verspielt – mit Witz, Leichtigkeit, kleinen Neckereien oder neckisch – humorvoll, augenzwinkernd, flirtend oder innlich – körpernah, anspielungsreich, ohne derb zu sein oder melancholisch – sanfte Traurigkeit, bittersüße Note;
-            Dunkel-dramatisch bedeutet z.B. dramatisch – von Schmerz, Trennung, Gefahr überschattet oder klagend – voller Wehmut, fast wie eine Klage oder schicksalsergeben – tragisch, von Unausweichlichkeit geprägt.
-            Orientiere dich gerne auch an den verschiedenen Epochen:
-            Barock 1600 bis 1720; Aufklärung 1720 bis 1800; Empfindsamkeit 1740 bis 1790; Sturm und Drang 1765 bis 1785; Weimarer Klassik 1786 bis 1805; Romantik 1795 bis 1835; Biedermeier 1815 bis 1845; Vormärz 1825 bis 1848; Realismus 1850 bis 1890;
-            Naturalismus 1880 bis 1900; Moderne 1890 bis 1920; Expressionismus 1910 bis 1925; Avantgarde/Dadaismus 1915 bis 1925; Nachkriegsliteratur 1945 bis 1960; Neue Subjektivität seit 1970; Postmoderne seit 1980
-            Die Texte dürfen sich sehr gerne der Ausdrucksweisen des jeweils ausgewählten Jahrhunderts bedienen. Die Texte sollen geschlechterneutral sein; bitte keine Gendersternchen oder ähnliches, sondern wirklich neutral.
-            Bitte maximal acht Zeilen für einen Liebesbrief oder zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte ohne Titel.")
-        
+    prompt = (
+        f"Schreibe einen {text_type} im Stil des {era}. Jahrhunderts mit einem {tone} Tonfall. "
+        "Du kannst dich hieran orientieren: "
+        "Klassisch-romantisch bedeutet z.B. sehnsuchtsvoll – voller Fernweh und unerfüllter Liebe oder schwärmerisch – verträumt, begeistert, idealisierend oder zärtlich – sanft, warmherzig, liebevoll oder leidenschaftlich – intensiv, brennend, fast dramatisch; "
+        "Feierlich-kunstvoll bedeutet z.B. feierlich – würdevoll, erhaben, fast wie eine Hymne oder pathetisch – mit großer Geste, überbordend, rhetorisch oder höfisch-galant – charmant, elegant, höflich-unterwerfend oder ergeben/dienend – unterwürfig, voller Hingabe; "
+        "Verspielt-leicht bedeutet z.B. verspielt – mit Witz, Leichtigkeit, kleinen Neckereien oder neckisch – humorvoll, augenzwinkernd, flirtend oder innlich – körpernah, anspielungsreich, ohne derb zu sein oder melancholisch – sanfte Traurigkeit, bittersüße Note; "
+        "Dunkel-dramatisch bedeutet z.B. dramatisch – von Schmerz, Trennung, Gefahr überschattet oder klagend – voller Wehmut, fast wie eine Klage oder schicksalsergeben – – tragisch, von Unausweichlichkeit geprägt. "
+        "Orientiere dich gerne auch an den verschiedenen Epochen: "
+        "Barock 1600 bis 1720; Aufklärung 1720 bis 1800; Empfindsamkeit 1740 bis 1790; Sturm und Drang 1765 bis 1785; Weimarer Klassik 1786 bis 1805; Romantik 1795 bis 1835; Biedermeier 1815 bis 1845; Vormärz 1825 bis 1848; Realismus 1850 bis 1890; "
+        "Naturalismus 1880 bis 1900; Moderne 1890 bis 1920; Expressionismus 1910 bis 1925; Avantgarde/Dadaismus 1915 bis 1925; Nachkriegsliteratur 1945 bis 1960; Neue Subjektivität seit 1970; Postmoderne seit 1980 "
+        "Die Texte dürfen sich sehr gerne der Ausdrucksweisen des jeweils ausgewählten Jahrhunderts bedienen. Die Texte sollen geschlechterneutral sein; bitte keine Gendersternchen oder ähnliches, sondern wirklich neutral. "
+        "Bitte maximal acht Zeilen für einen Liebesbrief oder zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte ohne Titel."
+)
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
