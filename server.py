@@ -15,7 +15,7 @@ def generate_text():
         text_type = data.get('text_type')
         era = data.get('era')
         
-        prompt = f"Schreibe einen {text_type} im Stil des {era}. Jahrhunderts."
+        prompt = f"Schreibe einen {text_type} im Stil des {era}. Jahrhunderts mit einem {tone} Tonfall. Du kannst dich hieran orientieren: Klassisch-romantisch bedeutet z.B. sehnsuchtsvoll – voller Fernweh und unerfüllter Liebe oder schwärmerisch – verträumt, begeistert, idealisierend oder zärtlich – sanft, warmherzig, liebevoll oder leidenschaftlich – intensiv, brennend, fast dramatisch; Feierliche-kunstvoll bedeutet z.B. feierlich – würdevoll, erhaben, fast wie eine Hymne oder pathetisch – mit großer Geste, überbordend, rhetorisch oder höfisch-galant – charmant, elegant, höflich-unterwerfend oder ergeben/dienend – unterwürfig, voller Hingabe; Verspielt-leicht bedeutet z.B. verspielt – mit Witz, Leichtigkeit, kleinen Neckereien oder neckisch – humorvoll, augenzwinkernd, flirtend oder innlich – körpernah, anspielungsreich, ohne derb zu sein oder melancholisch – sanfte Traurigkeit, bittersüße Note; Dunkel-dramatisch bedeutet z.B. dramatisch – von Schmerz, Trennung, Gefahr überschattet oder klagend – voller Wehmut, fast wie eine Klage oder schicksalsergeben – tragisch, von Unausweichlichkeit geprägt. Die Texte sollen geschlechterneutral sein. Die Texte dürfen sich sehr gerne der Ausdrucksweisen des jeweils ausgewählten Jahrhunderts bedienen. Die Texte sollen bitte alle eine zum jeweiligen Text passende Überschrift bzw. Titel haben. Bitte maximal acht Zeilen für einen Liebesbrief oder zwei Strophen zu je vier Versen für ein Liebesgedicht."
         
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
