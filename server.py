@@ -18,12 +18,12 @@ def generate_text():
         
         prompt = (
             f"Schreibe einen {text_type} im Stil des {era}. Jahrhunderts mit einem {tone} Tonfall. Du kannst dich hieran orientieren: "
-            "Bitte unbedingt maximal acht Zeilen für einen Liebesbrief und zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte nur eines erstellen, also entweder Liebesgedicht oder Liebesbrief. Bitte alle ohne Titel und ohne irgendwelche Überschriften!"
             "Klassisch-romantisch bedeutet z.B. sehnsuchtsvoll – voller Fernweh und unerfüllter Liebe oder schwärmerisch – verträumt, begeistert, idealisierend oder zärtlich – sanft, warmherzig, liebevoll oder leidenschaftlich – intensiv, brennend, fast dramatisch; "
             "Feierlich-kunstvoll bedeutet z.B. feierlich – würdevoll, erhaben, fast wie eine Hymne oder pathetisch – mit großer Geste, überbordend, rhetorisch oder höfisch-galant – charmant, elegant, höflich-unterwerfend oder ergeben/dienend – unterwürfig, voller Hingabe; "
             "Verspielt-leicht bedeutet z.B. verspielt – mit Witz, Leichtigkeit, kleinen Neckereien oder neckisch – humorvoll, augenzwinkernd, flirtend oder innlich – körpernah, anspielungsreich, ohne derb zu sein oder melancholisch – sanfte Traurigkeit, bittersüße Note; "
             "Dunkel-dramatisch bedeutet z.B. dramatisch – von Schmerz, Trennung, Gefahr überschattet oder klagend – voller Wehmut, fast wie eine Klage oder schicksalsergeben – – tragisch, von Unausweichlichkeit geprägt. "
             "Die Texte dürfen sich sehr gerne der Ausdrucksweisen des jeweils ausgewählten Jahrhunderts bedienen. Die Texte sollen geschlechterneutral sein; bitte keine Gendersternchen oder ähnliches, sondern wirklich neutral. "
+            "Bitte unbedingt maximal acht Zeilen für einen Liebesbrief und zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte nur eines erstellen, also entweder Liebesgedicht oder Liebesbrief. Bitte alle ohne Titel und ohne irgendwelche Überschriften!"
         )
 
         response = client.chat.completions.create(
