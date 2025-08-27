@@ -19,7 +19,7 @@ def generate_text():
         prompt = (
             f"Generiere ausschließlich einen einzigen Text: entweder einen Liebesbrief ODER ein Liebesgedicht. "
             f"Generiere KEINEN TITEL wie 'Liebesbrief' oder 'Liebesgedicht'. "
-            f"Generiere KEINE PLATZHALTER wie 'Dein Name' oder ähnliches. "
+            f"Generiere KEINE PLATZHALTER wie 'Dein Name' oder ähnliches. NIEMALS!"
             f"Beschränke den Liebesbrief auf maximal acht Zeilen und 80 Wörter. "
             f"Beschränke das Liebesgedicht auf maximal zwei Strophen zu je vier Versen. "
             f"Verfasse einen Liebesbrief nur als Prosatext und ein Liebesgedicht nur in Versform. "
