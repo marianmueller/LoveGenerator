@@ -17,13 +17,23 @@ def generate_text():
         tone = data.get('tone')
         
         prompt = (
-            f"Schreibe einen {text_type} im Stil des {era}. Jahrhunderts mit einem {tone} Tonfall. Du kannst dich hieran orientieren: "
-            "Klassisch-romantisch bedeutet z.B. sehnsuchtsvoll – voller Fernweh und unerfüllter Liebe oder schwärmerisch – verträumt, begeistert, idealisierend oder zärtlich – sanft, warmherzig, liebevoll oder leidenschaftlich – intensiv, brennend, fast dramatisch; "
-            "Feierlich-kunstvoll bedeutet z.B. feierlich – würdevoll, erhaben, fast wie eine Hymne oder pathetisch – mit großer Geste, überbordend, rhetorisch oder höfisch-galant – charmant, elegant, höflich-unterwerfend oder ergeben/dienend – unterwürfig, voller Hingabe; "
-            "Verspielt-leicht bedeutet z.B. verspielt – mit Witz, Leichtigkeit, kleinen Neckereien oder neckisch – humorvoll, augenzwinkernd, flirtend oder innlich – körpernah, anspielungsreich, ohne derb zu sein oder melancholisch – sanfte Traurigkeit, bittersüße Note; "
-            "Dunkel-dramatisch bedeutet z.B. dramatisch – von Schmerz, Trennung, Gefahr überschattet oder klagend – voller Wehmut, fast wie eine Klage oder schicksalsergeben – – tragisch, von Unausweichlichkeit geprägt. "
-            "Die Texte dürfen sich sehr gerne der Ausdrucksweisen des jeweils ausgewählten Jahrhunderts bedienen. Die Texte sollen geschlechterneutral sein; bitte keine Gendersternchen oder ähnliches, sondern wirklich neutral. "
-            "Bitte nur eines erstellen, also entweder Liebesgedicht oder Liebesbrief. Bitte unbedingt maximal acht Zeilen für einen Liebesbrief und zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte alle ohne Titel. Es soll auch nicht Liebesgedicht oder Liebesbrief oder sowas drüberstehen. "
+            f"Generiere ausschließlich einen einzigen Text: entweder einen Liebesbrief ODER ein Liebesgedicht. "
+            f"Generiere KEINEN TITEL wie 'Liebesbrief' oder 'Liebesgedicht'. "
+            f"Beschränke den Liebesbrief auf maximal acht Zeilen. "
+            f"Beschränke das Liebesgedicht auf maximal zwei Strophen zu je vier Versen. "
+            f"Die Texte sollen geschlechterneutral sein und KEINE Gendersternchen oder ähnliches enthalten. "
+            f"Die Texte sollen sich im Stil des {era}. Jahrhunderts mit einem {tone} Tonfall anlehnen. "
+            "Nutze dafür folgende Stilanweisungen: "
+            "Klassisch-romantisch: sehnsuchtsvoll, schwärmerisch, zärtlich, leidenschaftlich. "
+            "Feierlich-kunstvoll: würdevoll, pathetisch, höfisch-galant, ergeben/dienend. "
+            "Verspielt-leicht: witzig, humorvoll, augenzwinkernd, flirtend, innlich, melancholisch. "
+            "Dunkel-dramatisch: schmerzhaft, klagend, schicksalsergeben, tragisch. "
+            "Orientiere dich gerne auch an den verschiedenen Epochen: "
+            "Barock (1600-1720); Aufklärung (1720-1800); Empfindsamkeit (1740-1790); Sturm und Drang (1765-1785); "
+            "Weimarer Klassik (1786-1805); Romantik (1795-1835); Biedermeier (1815-1845); Vormärz (1825-1848); "
+            "Realismus (1850-1890); Naturalismus (1880-1900); Moderne (1890-1920); Expressionismus (1910-1925); "
+            "Avantgarde/Dadaismus (1915-1925); Nachkriegsliteratur (1945-1960); Neue Subjektivität (seit 1970); "
+            "Postmoderne (seit 1980)."
         )
 
         response = client.chat.completions.create(
