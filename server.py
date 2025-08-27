@@ -25,9 +25,9 @@ def generate_text():
             "Dunkel-dramatisch bedeutet z.B. dramatisch – von Schmerz, Trennung, Gefahr überschattet oder klagend – voller Wehmut, fast wie eine Klage oder schicksalsergeben – – tragisch, von Unausweichlichkeit geprägt. "
             "Orientiere dich gerne auch an den verschiedenen Epochen: "
             "Barock 1600 bis 1720; Aufklärung 1720 bis 1800; Empfindsamkeit 1740 bis 1790; Sturm und Drang 1765 bis 1785; Weimarer Klassik 1786 bis 1805; Romantik 1795 bis 1835; Biedermeier 1815 bis 1845; Vormärz 1825 bis 1848; Realismus 1850 bis 1890; "
-            "Naturalismus 1880 bis 1900; Moderne 1890 bis 1920; Expressionismus 1910 bis 1925; Avantgarde/Dadaismus 1915 bis 1925; Nachkriegsliteratur 1945 bis 1960; Neue Subjektivität seit 1970; Postmoderne seit 1980 "
+            "Naturalismus 1880 bis 1900; Moderne 1890 bis 1920; Expressionismus 1910 bis 1925; Avantgarde/Dadaismus 1915 bis 1925; Nachkriegsliteratur 1945 bis 1960; Neue Subjektivität seit 1970; Postmoderne seit 1980. "
             "Die Texte dürfen sich sehr gerne der Ausdrucksweisen des jeweils ausgewählten Jahrhunderts bedienen. Die Texte sollen geschlechterneutral sein; bitte keine Gendersternchen oder ähnliches, sondern wirklich neutral. "
-            "Bitte maximal acht Zeilen für einen Liebesbrief oder zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte ohne Titel."
+            "Bitte acht Zeilen für einen Liebesbrief oder zwei Strophen zu je vier Versen für ein Liebesgedicht. Bitte ohne Titel."
         )
 
         response = client.chat.completions.create(
