@@ -22,6 +22,7 @@ def generate_text():
             f"Generiere KEINE PLATZHALTER wie 'Dein Name' oder ähnliches. "
             f"Beschränke den Liebesbrief auf maximal acht Zeilen und 80 Wörter. "
             f"Beschränke das Liebesgedicht auf maximal zwei Strophen zu je vier Versen. "
+            f"Verfasse einen Liebesbrief nur als Prosatext und ein Liebesgedicht nur in Versform. "
             f"Die Texte sollen geschlechterneutral sein und KEINE Gendersternchen oder ähnliches enthalten. "
             f"Die Texte sollen sich im Stil des {era}. Jahrhunderts mit einem {tone} Tonfall anlehnen. "
             f"Nutze dafür folgende Stilanweisungen: "
