@@ -294,7 +294,8 @@
         
         <form id="loveForm">
             <div class="button-row">
-                <button type="button" class="type-btn" data-type="Liebesgedicht">Liebesgedicht</button>
+				Wähle eine Form, ein Jahrhundert und eine Stimmung aus<br>
+				<button type="button" class="type-btn" data-type="Liebesgedicht">Liebesgedicht</button>
                 <button type="button" class="type-btn" data-type="Liebesbrief">Liebesbrief</button>
             </div>
             <div class="era-row">
@@ -383,7 +384,7 @@
         loveForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             if (!selectedType || !selectedEra || !selectedTone) {
-                showError('Bitte wähle eine Art des Textes, ein Jahrhundert und einen Tonfall aus.');
+                showError('Bitte wähle eine Art des Textes, ein Jahrhundert und eine Stimmung aus.');
                 return;
             }
             
