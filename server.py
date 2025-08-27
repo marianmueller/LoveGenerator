@@ -1,26 +1,26 @@
-# Importiert Flask, um einen Server zu erstellen
+# Import the Flask web framework
 from flask import Flask, request, jsonify
 
-# Erstellt eine Instanz der App
+# Create a Flask application instance. This is what Gunicorn looks for.
 app = Flask(__name__)
 
-# Der Endpunkt (die "Adresse"), die Ihre Webseite anruft
+# The endpoint (the "address") that your website calls
 @app.route('/generate', methods=['POST'])
 def generate_text():
-    # Holt die Daten von Ihrer Webseite
+    # Get the data from your website's request
     data = request.get_json()
     text_type = data.get('text_type')
     era = data.get('era')
-    
-    # Simuliert die Antwort der KI
+
+    # Simulate the AI response. This is for testing the connection.
     if text_type == 'Liebesgedicht' and era == '17':
         generated_text = "Ein Liebesgedicht aus dem 17. Jahrhundert."
     else:
         generated_text = "Ein generierter Text."
-    
-    # Sendet die Antwort als JSON zurück an Ihre Webseite
+
+    # Return the response as JSON to your website
     return jsonify({"text": generated_text})
 
-# Der Server startet, wenn das Skript läuft
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+# Gunicorn will run the "app" object directly, so the following block is not needed for Render.
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=10000)
